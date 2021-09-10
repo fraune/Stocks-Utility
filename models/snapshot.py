@@ -1,6 +1,6 @@
 from datetime import datetime
 
-FIDELITY_DATE_FORMAT = "%Y/%m/%d"
+FIDELITY_DATE_FORMAT = "%Y/%m/%d-%H:%M:%S"
 
 
 class Snapshot:
