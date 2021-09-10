@@ -1,9 +1,9 @@
-from dateutil.relativedelta import relativedelta
-
 from models.snapshot import Snapshot
 
 
 class Series:
+    # TODO: Read from JSON file as input
+    # TODO: don't keep two data objects with the same data
     data: list = []
     data_by_date: dict = {}
 
@@ -12,7 +12,6 @@ class Series:
             snapshot = Snapshot(json_dict)
             self.data.append(snapshot)
             self.data_by_date[snapshot.date] = snapshot
-        # self.force_order_old_to_new()
 
     def get_oldest_snapshot(self):
         return self.data[0]
