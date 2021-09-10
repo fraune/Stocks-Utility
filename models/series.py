@@ -19,15 +19,3 @@ class Series:
 
     def get_newest_snapshot(self):
         return self.data[len(self.data) - 1]
-
-    # return a snapshot with the time difference
-    # def get_snapshot_with_time_diff(self, beginning_snapshot: Snapshot, difference_years: int):
-    #     if beginning_snapshot is self.get_oldest_snapshot() and difference_years > 0:
-    #         return None
-    #     if beginning_snapshot is self.get_newest_snapshot() and difference_years < 0:
-    #         return None
-    #
-    #     new_date = beginning_snapshot.date + relativedelta(years=difference_years)
-    #     # beginning_snapshot.date.
-    #     print(new_date)
-    #     print(new_date)
