@@ -5,8 +5,8 @@ import requests
 
 
 class Frequency(Enum):
-    y = "Yearly",
-    m = "Monthly",
+    y = "Yearly"
+    m = "Monthly"
     d = "Daily"
 
 
@@ -14,7 +14,7 @@ def download():
     print("Hello. What would you like to download from Fidelity?")
     ticker = input("  ticker: ")
     frequency_character = input("  frequency (y/m/d): ")
-    frequency_string = Frequency[frequency_character].value[0]
+    frequency_string = Frequency[frequency_character].value
     get_data(ticker, frequency_string)
 
 
