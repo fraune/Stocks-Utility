@@ -3,6 +3,8 @@ from enum import Enum
 
 import requests
 
+URL = 'https://fastquote.fidelity.com/service/marketdata/historical/chart/json?productid=research&symbols={ticker}&startDate=1970/01/01&endDate=2021/11/08&barWidth={frequency}&extendedHours=N&quoteType=R&corpActions=Y&timestamp=start&uuid=6debdc8c-aea9-11e3-962f-9bc8b53daa77&callback=null'
+
 
 class Frequency(Enum):
     y = "Yearly"
@@ -21,14 +23,13 @@ def download():
 # TODO: Save to file as JSON or load series
 # TODO: Add more param options for user
 def get_data(ticker: str, frequency: str):
-    url = f'https://fastquote.fidelity.com/service/marketdata/historical/chart/json?productid=research&symbols={ticker}&startDate=1970/01/01&endDate=2021/09/05&barWidth={frequency}&extendedHours=N&quoteType=R&corpActions=Y&timestamp=start&uuid=6debdc8c-aea9-11e3-962f-9bc8b53daa77&callback=null'
-    result = requests.get(url)
+    url_formatted = URL.format(ticker=ticker, frequency=frequency)
+    result = requests.get(url_formatted)
     json_response = convert_fidelity_text_response_to_json(result.text)
     response_dict = json.loads(json_response)
-
-    juicy_data = response_dict.get('Symbol')[0].get('BarList').get('BarRecord')
+    stock_json = response_dict.get('Symbol')[0].get('BarList').get('BarRecord')
     with open(f'data/{ticker}.json', 'w') as outfile:
-        json.dump(juicy_data, outfile)
+        json.dump(stock_json, outfile)
 
 
 def convert_fidelity_text_response_to_json(text: str):
