@@ -1,7 +1,7 @@
 import json
 
 
-def convert():
+def convert(cut_off_timestamp: bool = False):
     print('What downloaded ticker data would you like to convert to CSV?')
     ticker = input('  ticker: ')
     with open(f'data/{ticker}.json') as json_file:
@@ -16,7 +16,7 @@ def convert():
     file_object = open(f'data/{ticker}.csv', 'a')
     file_object.write(csv_header)
     for day in data:
-        if day['lt'].endswith('-00:00:00'):
+        if cut_off_timestamp and day['lt'].endswith('-00:00:00'):
             day['lt'] = day['lt'][:-9]
         day_data = []
         for key in keys:
