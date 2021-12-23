@@ -11,9 +11,9 @@ def welcome():
     choice = input('What would you like to do: ')
 
     int_choice = int(choice)
-    if int_choice is 1:
+    if int_choice == 1:
         download()
-    elif int_choice is 2:
+    elif int_choice == 2:
         convert()
-    elif int_choice is 3:
+    elif int_choice == 3:
         analyze()
