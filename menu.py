@@ -1,6 +1,6 @@
-from analyze.analyze import analyze
-from convert.convert import convert
-from download.download import download
+from analyze import analyze
+from convert import convert
+from download import download
 
 
 def menu():
