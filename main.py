@@ -1,3 +1,3 @@
-from welcome.welcome import welcome
+from menu.menu import menu
 
-welcome()
+menu()

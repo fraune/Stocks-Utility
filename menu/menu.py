@@ -3,8 +3,8 @@ from convert.convert import convert
 from download.download import download
 
 
-def welcome():
-    print('Welcome.')
+def menu():
+    print('Welcome to the Stocks Analysis')
     print('  1 = download')
     print('  2 = convert')
     print('  3 = analyze')
