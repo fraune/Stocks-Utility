@@ -13,10 +13,15 @@ def update_ticker_lists():
     ftp.cwd('/SymbolDirectory')
     ftp.retrbinary(f'RETR {MAIN_LIST}', open(f'data/{MAIN_LIST}', 'wb').write)
     ftp.retrbinary(f'RETR {ALTERNATIVE_LIST}', open(f'data/{ALTERNATIVE_LIST}', 'wb').write)
-    delete_last_line_of_file(f'data/{MAIN_LIST}')
-    delete_last_line_of_file(f'data/{ALTERNATIVE_LIST}')
+
+    # The last line of each file contains a metadata record and new line. You might want to delete two lines off the end
+    # if you plan on analyzing this data or running an algorithm on it.
+
+    # delete_last_line_of_file(f'data/{MAIN_LIST}')
+    # delete_last_line_of_file(f'data/{ALTERNATIVE_LIST}')
 
 
+# Unfinished line deleting code below (only deletes one line at a time)
 def delete_last_line_of_file(filepath: str):
     with open(filepath, 'r+', encoding='utf-8') as file:
         # Move the pointer (similar to a cursor in a text editor) to the end of the file
